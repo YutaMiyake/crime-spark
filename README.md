@@ -1,7 +1,7 @@
 # Streaming Processing Project
 
 ## Project Overview
-Statistical analyses of the data using Apache Spark Structured Streaming
+Statistical analyses of the crime data using Apache Spark Structured Streaming
 
 ## Development Environment
 
@@ -30,7 +30,7 @@ export PATH=$JAVA_HOME/bin:$SPARK_HOME/bin:$SCALA_HOME/bin:$PATH
 start.sh
 ```
 
-## Commands
+## Test
 ```shell
 
 # run zookeeper
@@ -49,5 +49,6 @@ python consumer_server.py
 spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.3.4 --master local[*] data_stream.py
 ```
 
-
+## Acknowledgements
+Udacity
 
