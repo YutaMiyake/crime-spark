@@ -1,7 +1,7 @@
 # Streaming Processing Project
 
 ## Project Overview
-Statistical analyses of the crime data using Apache Spark Structured Streaming
+Statistical analyses of San Francisco Crime data using Apache Spark Structured Streaming
 
 ## Development Environment
 
