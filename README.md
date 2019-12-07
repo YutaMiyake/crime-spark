@@ -1,17 +1,49 @@
-# Project
-## Question 1
-How did changing values on the SparkSession property parameters affect the throughput and latency of the data?
+# Streaming Processing Project
 
-Changing for example these properties in the SparkSession below
+## Project Overview
+Statistical analyses of the data using Apache Spark Structured Streaming
 
-- spark.sql.shuffle.partitions
-- spark.default.parallelism
+## Development Environment
 
-either increase or decrease the throughput and latency depending on job algorithm, size of data, machine resources, and so on ..
+- Spark 2.4.3
+- Scala 2.11.x
+- Java 1.8.x
+- Kafka build with Scala 2.11.x
+- Python 3.6.x or 3.7.x
 
-## Question 2
-What were the 2-3 most efficient SparkSession property key/value pairs? Through testing multiple variations on values, how can you tell these were the most optimal?
+## Environment Setup (for Macs/Linux)
+- Download Spark from https://spark.apache.org/downloads.html ("Prebuilt for Apache Hadoop 2.7 and later.")
+- Download Kafka from https://kafka.apache.org/downloads, with Scala 2.11, version 2.3.0. 
+- Download Scala 2.11.x. from the official site, or brew install scala (Mac)
+- Run below to verify correct versions:
+```
+java -version
+scala -version
+Make sure your ~/.bash_profile looks like below (might be different depending on your directory):
+export SPARK_HOME=/Users/dev/spark-2.4.3-bin-hadoop2.7
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
+export SCALA_HOME=/usr/local/scala/
+export PATH=$JAVA_HOME/bin:$SPARK_HOME/bin:$SCALA_HOME/bin:$PATH
+```
 
-Through checking two indicies inputRowsPerSecond and processedRowsPerSecond, it is concluded that these two key/value pairs are the best
-- "spark.default.parallelism": "2"
-- "spark.sql.shuffle.partitions": "1"
+## Commands
+```shell
+
+# run zookeeper
+/usr/bin/zookeeper-server-start config/zookeeper.properties
+
+# run kafka
+/usr/bin/kafka-server-start config/server.properties
+
+# run kafka producer
+python kafka_server.py
+
+# run kafka consumer
+python consumer_server.py
+
+# run spark job
+spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.3.4 --master local[*] data_stream.py
+```
+
+
+
